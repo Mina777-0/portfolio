@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP template</title>
+
+    <script>
+        document.addEventListener('DOMConentLoaded', function(){
+            document.querySelector('.otp-form').addEventListener('submit', async function(event){
+                event.preventDefault();
+
+                const formData= new FormData(this);
+
+                console.log('otp:', ...formData.entries());
+
+                const data= {
+                    'otp': formData.get('otp')
+                }
+                const Origin= 'http://127.0.0.1:8080/api'
+                const url= `${Origin}/verify_otp/`;
+                const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTc2NTEwNzY0My42OTg2M30.B2z_ZXqxQKmvFwiXqJJkgTsZb7zn3vqkDNO23BTb-K0eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTc2NTExMDk1OS43MDY1OTZ9.wnnyoI1LCVYEePQjRWSwvGJ7j8-wofZvO5pEm89Aw5o';
+                try {
+                    const response= await fetch(
+                        url, {
+                            'method': 'POST',
+                            'body': JSON.stringify(data),
+                            'headers': {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            }
+                        }
+                    )
+
+                    if (!response.ok) {
+                        throw new Error(`http error: ${response.status}`)
+                    }
+
+                    const responseData= await response.json();
+                    if (responseData) {
+                        console.log('Rsponse-data:', responseData);
+
+                        if(responseData.message) {
+                            alert(responseData.message);
+                        }
+                    }
+
+                } catch (error) {
+                    console.log('Error in fetching url,', error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <form class="otp-form" method="post">
+            <input type="text" name="otp">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    
+    
+</body>
+</html>

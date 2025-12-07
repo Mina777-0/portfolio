@@ -1,0 +1,33 @@
+POST http://127.0.0.1:8080/api/signin/
+Content-Type: application/json
+
+{"email": "mina.eskander.me@gmail.com", "password": "Pass@12345"}
+
+###
+
+GET http://127.0.0.1:8080/api/verify_user/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTc2NTEwMTY0OS43MjEzNzV9.cxjW8ltukLEepvOdx8Wz5ZsZHEa1WE0AHDu59SnfEl4
+###
+
+GET http://127.0.0.1:8080/api/refresh_token/
+Content-Type: application/json
+
+
+###
+GET http://127.0.0.1:8080/api/change_password_request/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTc2NTEwNzY0My42OTg2M30.B2z_ZXqxQKmvFwiXqJJkgTsZb7zn3vqkDNO23BTb-K0
+
+
+###
+
+POST http://127.0.0.1:8080/api/verify_otp/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwidHlwZSI6ImFjY2VzcyIsImV4cCI6MTc2NTEwNzY0My42OTg2M30.B2z_ZXqxQKmvFwiXqJJkgTsZb7zn3vqkDNO23BTb-K0
+
+
+{
+    "otp": "286751"
+}
+

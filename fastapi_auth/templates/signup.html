@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector('.signup-form').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const formData= new FormData(this);
+
+                console.log("User data:", ...formData.entries());
+
+                data={
+                    'email': formData.get('email'),
+                    'fname': formData.get('fname'),
+                    'lname': formData.get('lname'),
+                    'password1': formData.get('pass1'),
+                    'password2': formData.get('pass2')
+                }
+                const url= 'https://fa08f1acd584.ngrok-free.app/api/signup/';
+                const alt_url= "http://127.0.0.1:8080/api/signup/";
+                try {
+                    const response= await fetch(
+                        url, {
+                            method:'POST',
+                            body: JSON.stringify(data),
+                            headers:{
+                                'Content-type': 'application/json'
+                            }
+                        }
+                    )
+
+                    if (!response.ok) {
+                        throw new Error(`Http Error: ${response.status}`)
+                    }
+
+                    const responseData= await response.json();
+                    if (responseData) {
+                        console.log('Response:', responseData);
+
+                        if (responseData.message) {
+                            alert(responseData.message);
+                        }
+                    }
+                } catch(error) {
+                    console.log("Error in fetching:", error);
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <form class="signup-form" method="post">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="fname" placeholder="First name">
+            <input type="text" name="lname" placeholder="Last name">
+            <input type="password" name="pass1" placeholder="Password">
+            <input type="password" name="pass2" placeholder="Confirm Password">
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+    
+</body>
+</html>
