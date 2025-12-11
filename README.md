@@ -84,6 +84,31 @@ This project demonstrates strong understanding of:
 
 ---
 
+3️⃣ Secure Asynchronous Connection Pooling Infrastructure
+
+A high-performance async client–server communication layer with SSL/TLS and robust connection lifecycle management.
+
+⭐ Features
+
+* SSL/TLS Encrypted Communication — All client–server traffic is protected using certificates (cert1.pem + key1.pem) for secure and private data exchange.
+* Fully Asynchronous I/O — Built entirely on asyncio, enabling high concurrency and non-blocking operations without threading overhead.
+* Efficient Connection Pooling — A fixed-size pool of persistent encrypted connections reduces creation overhead, increases throughput, and stabilizes performance under load.
+* Borrow/Return Session Manager — Connections are managed via an asynccontextmanager ensuring safe checkout and guaranteed return, preventing leaks even during exceptions.
+* Concurrency-Safe Pool State — Uses asyncio.Lock and asyncio.Event to maintain consistency when multiple coroutines borrow connections or the recycler updates the pool.
+* Automatic Connection Recycling — A background task periodically closes and recreates connections (based on pool_recycle) to avoid stale connections and ensure long-running stability.
+
+🧠 What It Shows
+
+* Infrastructure-level engineering
+* Async concurrency patterns (locks, events, context managers)
+* Secure client/server architecture
+* Resource lifecycle management and fault tolerance
+* Deep understanding of low-level network systems
+
+
+
+---
+
 # 🛠 Additional Tools & Skills
 
 These tools often support my main projects:
