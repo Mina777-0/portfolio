@@ -20,7 +20,7 @@ def validate_pool_size(obj, instance) -> int:
             for item in metadata:
                 if isinstance(item, RangeValidator):
                     value= getattr(instance, _field_name)
-                    item.validate_range(value)
+                    item.validate_parameters(value)
                     print(f"Max_value: {item.max_value} | Value: {value}")
                     
                     return value

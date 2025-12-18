@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import inspect
-from typing import get_args, Annotated
+from typing import get_args, Annotated, Self
 
 
 @dataclass
@@ -13,9 +13,18 @@ class RangeValidator:
     max_value:int 
     exclusive: bool= False
 
-    def __post_init__(self):
-        if self.exclusive == True:
-            self.max_value= self.max_value - self.min_value
+    def validate_parameters(self, value: int) -> Self:
+        if value < self.min_value or value > self.max_value:
+            raise ValueError("Value is out of range")
+        
+        if self.exclusive:
+            if value == self.max_value:
+                raise ValueError("The value should be less than max-value or exclusive is False")
+            
+            self.max_value = self.max_value - self.min_value
+
+        return self 
+
     
     
 
