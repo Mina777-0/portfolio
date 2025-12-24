@@ -106,6 +106,33 @@ A high-performance async client–server communication layer with SSL/TLS and ro
 * Deep understanding of low-level network systems
 
 
+---
+
+4️⃣ Elastic Asynchronous RPC Engine
+
+A high‑performance, secure RPC framework built directly on TCP using asyncio and TLS 1.3.
+
+⭐ Features
+
+* Async RPC over Raw TCP — Custom-built RPC engine operating directly on TCP streams, eliminating HTTP/REST overhead.
+* Native TLS 1.3 Security — End‑to‑end encrypted transport using ssl.SSLContext with certificate‑based authentication and modern ciphers (AES‑256‑GCM).
+* Binary Framing Protocol — Implements a 4‑byte Big‑Endian length‑prefix framing layer to safely reconstruct JSON‑RPC messages over a stream‑based protocol.
+* Elastic Queue Management (Spillover Strategy) — Dynamic task lanes automatically expand under load, applying backpressure and protecting the server from resource exhaustion.
+* Persistent Worker Pool — Long‑lived asyncio workers eliminate task‑spawning overhead, prevent memory leaks, and maintain a stable memory footprint.
+* Decorator‑Based Service Routing — Business logic is registered via @service_router.service() decorators, fully decoupling services from network internals.
+* Graceful Shutdown Handling — Coordinated teardown, draining in‑flight tasks and guaranteeing zero message loss.
+* Built‑in Telemetry Services — Exposes internal health metrics over RPC, including memory usage, CPU load, and queue depth.
+
+
+🧠 What It Shows
+
+* Systems‑level programming in Python
+* Deep understanding of TCP, framing, and backpressure
+* Async concurrency design without high‑level frameworks
+* Secure distributed systems engineering
+* Resource‑predictable, production‑grade infrastructure design
+
+
 
 ---
 
