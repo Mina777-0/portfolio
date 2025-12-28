@@ -1,10 +1,10 @@
 👋 Hi, I'm Mina Eskander
 
-Backend Developer — Python / FastAPI / Async / Distributed Systems
+Systems & Distributed Systems Engineer
 
-I build scalable backend systems with focus on authentication, messaging, secure communication, and high‑performance async architectures. My work spans APIs, distributed systems, networking, and building tools from the ground up.
+I don't just use frameworks; I build the infrastructure that makes them possible.
 
-I enjoy understanding what happens under the hood — from encryption and sockets, to processes, schedulers, and message queues.
+Core Obsession: High-performance networking, concurrency, and secure protocols. I specialise in Python's asyncio internals, raw socket programming, and building distributed systems from the ground up
 
 ---
 
