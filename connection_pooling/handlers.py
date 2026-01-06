@@ -37,11 +37,12 @@ class ConnectionHandler:
                     print(f"\n[SERVER]: Error in decoding the incoming data")
                 
                 if message.get('method')== 'PING': 
-                    writer.write('Hello-Secure-World'.encode('utf-8'))
+                    writer.write('Welcome to the pool'.encode('utf-8'))
                     await writer.drain()
                 
                 else:
-                    writer.write('Your request is received'.encode('utf-8'))
+                    response= f"Hello {message.get('body')}".encode('utf-8')
+                    writer.write(response)
                     await writer.drain()
 
                 print(message.get('body'))
