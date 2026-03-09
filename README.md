@@ -1,6 +1,6 @@
 👋 Hi, I'm Mina Eskander
 
-Systems & Distributed Systems Engineer
+Backend, Asynchronous & High-Concurrency Systems Engineer.
 
 I don't just use frameworks; I build the infrastructure that makes them possible.
 
