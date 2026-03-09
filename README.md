@@ -133,6 +133,30 @@ A high‑performance, secure RPC framework built directly on TCP using asyncio a
 * Resource‑predictable, production‑grade infrastructure design
 
 
+---
+
+5️⃣ Zero‑Copy High‑Performance Network Engine
+
+An ultra‑low‑latency packet processing engine designed for high‑throughput secure network communication.
+
+⭐ Features:
+
+* Zero‑Copy Packet Processing — Uses bytearray, memoryview, and recv_into() to read network data directly into preallocated buffers, avoiding unnecessary memory copies.
+* TLS‑Secured Transport — Built on SSL sockets to ensure encrypted communication without sacrificing performance.
+* Circular Buffer Architecture — Implements a custom circular buffer for efficient packet streaming and continuous memory reuse.
+* Binary Packet Encoding — Uses struct and msgspec for fast binary serialization and deserialization of packets.
+* Ultra‑Low Latency Performance — Achieves ~2.5µs processing time per packet across ~1M packets through optimized memory access patterns.
+* GC‑Friendly Memory Strategy — Static buffer allocation and memoryview slicing minimize garbage collection pressure and maintain predictable performance.
+* Direct Socket Buffer Reads — ssock.recv_into() allows packets to be written directly into the circular buffer, eliminating intermediate allocations.
+
+🧠 What It Shows
+
+* Low‑level performance optimization in Python
+* Deep understanding of memory management and GC behavior
+* Network protocol engineering and packet framing
+* High‑throughput async/network system design
+* Systems‑level thinking beyond typical web backends
+
 
 ---
 
