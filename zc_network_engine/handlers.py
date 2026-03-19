@@ -86,6 +86,7 @@ class SocketHandler:
                     while self.cb.count >= self.cb.PACKET_SIZE:
                         #print(self.cb.peek())
                         fields= struct.unpack('!IddQ', self.cb.peek())
+                        #print(fields)
 
                         self.cb.advance()
                     
