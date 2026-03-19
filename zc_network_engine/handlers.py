@@ -2,6 +2,7 @@ import socket, ssl, os, sys, asyncio, time
 from dotenv import load_dotenv
 from urllib.parse import urlparse
 from typing import Optional
+import struct
 
 load_dotenv('.ven')
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'utils')))
@@ -65,10 +66,6 @@ class SocketHandler:
             print(f"\n[SERVER]: Connection is closed or unestablished.")
             return 
         
-        buffer= self.cb.write_to()
-
-        
-
         try:
             
             self.ssock.setblocking(False)
@@ -80,14 +77,15 @@ class SocketHandler:
                     #nbytes= await self.loop.sock_recv_into(self.ssock, buffer)
 
                     # We use the native recv_into. This performs decryption in-place into the buffer
-                    nbytes= self.ssock.recv_into(buffer)
+                    nbytes= self.ssock.recv_into(self.cb.write_to())
 
                     if nbytes == 0:
                         break
                     self.cb.did_write(nbytes)
 
                     while self.cb.count >= self.cb.PACKET_SIZE:
-                        print(self.cb.peek())
+                        #print(self.cb.peek())
+                        fields= struct.unpack('!IddQ', self.cb.peek())
 
                         self.cb.advance()
                     

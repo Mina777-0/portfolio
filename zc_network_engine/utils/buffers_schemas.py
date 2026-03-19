@@ -15,23 +15,23 @@ class CircularBuffer:
         return self.mv[self.tail: ]
     
     def did_write(self, nbytes):
-        self.tail += nbytes
+            
+        self.tail= (self.tail + nbytes) % self.size
         self.count += nbytes
 
     def peek(self):
         return self.mv[self.head: self.head + self.PACKET_SIZE]
 
     def advance(self):
-        self.head += self.PACKET_SIZE
+        self.head = (self.head + self.PACKET_SIZE) % self.size
         self.count -= self.PACKET_SIZE
 
-        if self.count == 0:
-            self.tail = 0
-            self.head = 0
-        else:
-            self.buffer[0:self.count] = self.mv[self.head:self.tail]
-            self.tail = self.count
-            self.head = 0
+        # Check the remaining chunks
+        left_chunck= self.size - self.tail
+        if self.PACKET_SIZE > left_chunck:
+            self.tail= (self.tail + left_chunck) % self.size
+            self.head= (self.head + left_chunck) % self.size
+            self.count= 0
 
 
 
