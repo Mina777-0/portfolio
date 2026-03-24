@@ -14,7 +14,7 @@ class AsyncPool:
     pool_capacity: Annotated[int, RangeValidator(min_value=1, max_value=10)]
 
     def __init__(self, **kw):
-        self.pool_capacity= kw.get('pool_size') if kw else 2
+        self.pool_capacity= kw.get('pool_capacity') if kw.get('pool_capacity') else 2
         self._queue= set()
         # Getter waiting list
         self._getters= deque()
@@ -41,7 +41,7 @@ class AsyncPool:
             waiter= waiters.popleft()
             if not waiter.done():
                 waiter.set_result(None)
-                return
+                break
         
 
 
@@ -59,7 +59,7 @@ class AsyncPool:
                 print(f"putter: {response}")
                 print("Stop-11")
                 
-            except:
+            except (asyncio.CancelledError, asyncio.TimeoutError) as e:
     
                 if self.psize() < self.pool_capacity and not waiter.cancelled():
                     # Wake up the placeholder in the putter waiting list
@@ -76,13 +76,18 @@ class AsyncPool:
                 waiter.cancel()
                 print("Stop-13")
 
+                
+                print("Stop-14")
+                raise e
+
+            finally:
                 try:
-                    # Clear the waiting list
-                    self._putters.remove(waiter)
+                    if waiter.cancelled():
+                        # Clear the waiting list
+                        self._putters.remove(waiter)
                 except ValueError:
                     pass
-                print("Stop-14")
-                raise
+
 
                     
 
@@ -108,21 +113,27 @@ class AsyncPool:
                 print(f"getter: {response}")
                 print("Stop-21")
                 
-            except:
+            except (asyncio.CancelledError, asyncio.TimeoutError) as e:
                 if self._queue and not waiter.cancelled():
                     self.wakeup_call(self._getters)
                     print("Stop-22")
                 waiter.cancel()
                 print("Stop-23")
 
-                try:
-                    # Clear the waiting list
-                    self._getters.remove(waiter)
-                except ValueError:
-                    pass 
+                
                 print("Stop-24")
                 
-                raise
+                raise e
+            
+            finally:
+                try:
+                    if waiter.cancelled():
+                        # Clear the waiting list
+                        self._getters.remove(waiter)
+                except ValueError:
+                    pass 
+
+
 
         # If there are connections in the pool
         item= self._queue.pop()
