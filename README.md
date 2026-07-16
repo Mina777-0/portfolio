@@ -18,6 +18,59 @@ GitHub: https://github.com/Mina777-0
 🚀 Projects
 
 ---
+1- OmniBook: Low-Latency Order Book & Ingestion Engine (Rust)
+
+A high-performance market data ingestion engine designed for low-latency processing of real-time cryptocurrency exchange order books.
+
+⭐ Features
+📡 Asynchronous Market Data Ingestion — Streams live order book updates from Binance and Bybit using tokio-tungstenite over secure WebSocket connections.
+⚡ Zero-Copy Binary Processing — Implements a custom C-compatible binary protocol with cache-aware memory alignment, leveraging bytemuck for zero-copy packet deserialization and allocation-free data processing.
+🔄 Lock-Free Processing Pipeline — Separates network I/O from state management through bounded tokio::sync::mpsc channels, eliminating mutex contention while preserving deterministic packet ordering.
+🛡 Predictable Concurrency & Backpressure — Uses bounded channels to propagate backpressure under high market volatility and integrates CancellationToken with JoinSet for deterministic, leak-free task lifecycle management.
+📚 In-Memory Order Book Engine — Maintains live bid/ask state using optimized in-memory data structures, enabling ultra-fast order book updates and efficient market state tracking.
+🚀 Performance-Oriented Design — Built with memory locality, cache efficiency, and predictable latency as primary design goals, making it suitable for latency-sensitive financial systems.
+
+
+🧠 What It Shows
+Systems programming with Rust
+Zero-copy memory techniques
+Lock-free concurrent architecture
+High-performance network programming
+Real-time market data processing
+Low-latency systems design
+
+---
+2- High-Performance Risk Management Infrastructure 
+
+An industrial-grade, multi-language risk engine designed for high-frequency trading environments. This system utilizes a decoupled architecture to ingest binary market data, manage risk state in Rust, and provide real-time updates via a throttled WebSocket dashboard.
+
+
+🏗 System Architecture
+The project implements a Producer-Consumer pattern to ensure maximum stability and zero data loss during market volatility.
+* Ingestion Layer (Python): A secure TCP server receives custom binary packets and instantly pushes them into an asyncio.Queue.
+* The Hot Path (Rust): Background workers pull packets from the queue and interface with a Rust-based Risk Engine. This ensures thread-safe, nanosecond-latency updates to the internal book state.
+* The Reporting Layer (WebSockets): A throttled aiohttp server samples the Rust engine's state at 1Hz, delivering vectorized metrics to the dashboard without impacting the performance of the ingestion workers.
+
+
+
+🚀 Key Features
+* Binary Transport Layer: Uses Python struct and SSL/TLS sockets for memory-efficient, high-speed data ingestion.
+* Binary Protocol: Custom packet framing (!BIdQq) using Python’s struct module for minimal network overhead.
+* Zero-Copy Strategy: Implemented a custom Circular Buffer to handle packet framing and avoid memory fragmentation.
+* Memory Safety: Risk state managed in Rust (via PyO3/Maturin), providing high-speed field validation and arithmetic.
+* Backpressure Management: Utilizes asyncio.Queue to decouple data receipt from processing, preventing "lag spikes" during high-volume bursts.
+* Vectorized Reporting: Leverages optimized data structures to calculate Total PnL and Exposure across the entire book in a single pass.
+* Unified Async Architecture: Concurrent execution of the Secure Socket Server (Inbound) and an aiohttp WebSocket Server (Outbound) on a single event loop.
+* Automated Accounting: Handles Realized/Unrealized PnL, Weighted Average Entry Price, and Net Exposure with "Counterparty Logic" (Client Buy = House Short).
+
+
+
+🛠 Tech Stack
+* Languages: Python 3.11+, Rust (Edition 2021)
+* Interoperability: PyO3 / Maturin
+* Math: NumPy (Vectorized Risk Processing)
+* Data Transport: Secure TCP Sockets (TLS/SSL)
+* Templating: Jinja2 (Dynamic Dashboard)
 
 
 ---
@@ -46,7 +99,7 @@ An ultra‑low‑latency packet processing engine designed for high‑throughput
 
 ---
 
-4 Elastic Asynchronous RPC Engine
+4- Elastic Asynchronous RPC Engine
 
 A high‑performance, secure RPC framework built directly on TCP using asyncio and TLS 1.3.
 
@@ -72,7 +125,7 @@ A high‑performance, secure RPC framework built directly on TCP using asyncio a
 
 ---
 
-5 Async Encrypted Message Broker
+5- Async Encrypted Message Broker
 
 A custom-built encrypted messaging system using asynchronous networking, cryptography, and a lightweight service bus.
 
@@ -107,7 +160,7 @@ This project demonstrates strong understanding of:
 
 ---
 
-6 Secure Asynchronous Connection Pooling Infrastructure
+6- Secure Asynchronous Connection Pooling Infrastructure
 
 A high-performance async client–server communication layer with SSL/TLS and robust connection lifecycle management.
 
@@ -130,7 +183,7 @@ A high-performance async client–server communication layer with SSL/TLS and ro
 
 
 ---
-7 Authentication API (FastAPI / JWT / Redis / RabbitMQ)
+7- Authentication API (FastAPI / JWT / Redis / RabbitMQ)
 
 A complete authentication system designed for scalable microservices.
 
@@ -155,33 +208,6 @@ A complete authentication system designed for scalable microservices.
 📦 Tech Stack
 
 FastAPI, Redis, RabbitMQ, SQLAlchemy (async), JWT, APScheduler, Docker
-
----
-
-6 
-
----
-
-# 🛠 Additional Tools & Skills
-
-These tools often support my main projects:
-
-* JWT internals** (signing, encoding, decoding)
-* OTP systems (time-based tokens, email OTP flows)
-* Cryptography: certificates, JWK, HMAC, RSA, signatures
-* Schedulers: APScheduler, multiprocessing timers
-* Distributed systems: Redis, RabbitMQ
-* Async architecture: asyncio, event loops, concurrency models
-* Processes and Threads: pool management, concurrency patterns
-
----
-
-📚 What I’m Learning & Improving
-
-* Deeper distributed systems patterns
-* Message queues (advanced RabbitMQ patterns)
-* Performance tuning and profiling
-* Secure token strategies (per-user key pairs)
 
 ---
 
