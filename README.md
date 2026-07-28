@@ -18,7 +18,7 @@ GitHub: https://github.com/Mina777-0
 🚀 Projects
 
 ---
-1- [OmniBook: Low-Latency Order L2 Book & Ingestion Engine (Rust)](../OmniBook)
+1- [OmniBook: Low-Latency Order L2 Book & Ingestion Engine (Rust)](/OmniBook)
 
 A high-performance market data ingestion engine designed for low-latency processing of real-time cryptocurrency exchange order books.
 
