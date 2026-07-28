@@ -18,7 +18,7 @@ GitHub: https://github.com/Mina777-0
 🚀 Projects
 
 ---
-1- OmniBook: Low-Latency Order L2 Book & Ingestion Engine (Rust)
+1- [OmniBook: Low-Latency Order L2 Book & Ingestion Engine (Rust)](./OmniBook)
 
 A high-performance market data ingestion engine designed for low-latency processing of real-time cryptocurrency exchange order books.
 
@@ -212,7 +212,3 @@ FastAPI, Redis, RabbitMQ, SQLAlchemy (async), JWT, APScheduler, Docker
 ---
 
 You can explore all repositories on my GitHub profile.
-
----
-
-If you'd like a clean GitHub landing page or additional documentation for each project, I can help refine this further.
