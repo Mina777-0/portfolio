@@ -40,7 +40,7 @@ Real-time market data processing
 Low-latency systems design
 
 ---
-2- High-Performance Risk Management Infrastructure 
+2- [High-Performance Risk Management Infrastructure](../../../VectorBridge_Risk_Engine)
 
 An industrial-grade, multi-language risk engine designed for high-frequency trading environments. This system utilizes a decoupled architecture to ingest binary market data, manage risk state in Rust, and provide real-time updates via a throttled WebSocket dashboard.
 
