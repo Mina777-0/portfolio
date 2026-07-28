@@ -18,28 +18,34 @@ GitHub: https://github.com/Mina777-0
 🚀 Projects
 
 ---
+
 1- [OmniBook: Low-Latency Order L2 Book & Ingestion Engine (Rust)](../../../OmniBook)
 
 A high-performance market data ingestion engine designed for low-latency processing of real-time cryptocurrency exchange order books.
 
 ⭐ Features
-📡 Asynchronous Market Data Ingestion — Streams live order book updates from Binance and Bybit using tokio-tungstenite over secure WebSocket connections.
-⚡ Zero-Copy Binary Processing — Implements a custom C-compatible binary protocol with cache-aware memory alignment, leveraging bytemuck for zero-copy packet deserialization and allocation-free data processing.
-🔄 Lock-Free Processing Pipeline — Separates network I/O from state management through bounded tokio::sync::mpsc channels, eliminating mutex contention while preserving deterministic packet ordering.
-🛡 Predictable Concurrency & Backpressure — Uses bounded channels to propagate backpressure under high market volatility and integrates CancellationToken with JoinSet for deterministic, leak-free task lifecycle management.
-📚 In-Memory Order Book Engine — Maintains live bid/ask state using optimized in-memory data structures, enabling ultra-fast order book updates and efficient market state tracking.
-🚀 Performance-Oriented Design — Built with memory locality, cache efficiency, and predictable latency as primary design goals, making it suitable for latency-sensitive financial systems.
+* Asynchronous Market Data Ingestion — Streams live order book updates from Binance and Bybit using tokio-tungstenite over secure WebSocket connections.
+* Zero-Copy Binary Processing — Implements a custom C-compatible binary protocol with cache-aware memory alignment, leveraging bytemuck for zero-copy packet deserialization and
+allocation-free data processing.
+* Lock-Free Processing Pipeline — Separates network I/O from state management through bounded tokio::sync::mpsc channels, eliminating mutex contention while preserving
+deterministic packet ordering.
+* Predictable Concurrency & Backpressure — Uses bounded channels to propagate backpressure under high market volatility and integrates CancellationToken with JoinSet for
+deterministic, leak-free task lifecycle management.
+* In-Memory Order Book Engine — Maintains live bid/ask state using optimized in-memory data structures, enabling ultra-fast order book updates and efficient market state tracking.
+* Performance-Oriented Design — Built with memory locality, cache efficiency, and predictable latency as primary design goals, making it suitable for latency-sensitive financial
+systems.
 
 
 🧠 What It Shows
-Systems programming with Rust
-Zero-copy memory techniques
-Lock-free concurrent architecture
-High-performance network programming
-Real-time market data processing
-Low-latency systems design
+* Systems programming with Rust
+* Zero-copy memory techniques
+* Lock-free concurrent architecture
+* High-performance network programming
+* Real-time market data processing
+* Low-latency systems design
 
 ---
+
 2- [High-Performance Risk Management Infrastructure](../../../VectorBridge_Risk_Engine)
 
 An industrial-grade, multi-language risk engine designed for high-frequency trading environments. This system utilizes a decoupled architecture to ingest binary market data, manage risk state in Rust, and provide real-time updates via a throttled WebSocket dashboard.
@@ -48,8 +54,10 @@ An industrial-grade, multi-language risk engine designed for high-frequency trad
 🏗 System Architecture
 The project implements a Producer-Consumer pattern to ensure maximum stability and zero data loss during market volatility.
 * Ingestion Layer (Python): A secure TCP server receives custom binary packets and instantly pushes them into an asyncio.Queue.
-* The Hot Path (Rust): Background workers pull packets from the queue and interface with a Rust-based Risk Engine. This ensures thread-safe, nanosecond-latency updates to the internal book state.
-* The Reporting Layer (WebSockets): A throttled aiohttp server samples the Rust engine's state at 1Hz, delivering vectorized metrics to the dashboard without impacting the performance of the ingestion workers.
+* The Hot Path (Rust): Background workers pull packets from the queue and interface with a Rust-based Risk Engine. This ensures thread-safe, nanosecond-latency updates to the
+* internal book state.
+* The Reporting Layer (WebSockets): A throttled aiohttp server samples the Rust engine's state at 1Hz, delivering vectorized metrics to the dashboard without impacting the
+* performance of the ingestion workers.
 
 
 
