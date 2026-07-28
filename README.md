@@ -4,7 +4,7 @@ Backend, Asynchronous & High-Concurrency Systems Engineer.
 
 I don't just use frameworks; I build the infrastructure that makes them possible.
 
-Core Obsession: High-performance, Low-latency and Memory-safe networking and concurrency. I Specialised in High-Performance Rust systems, concurrent network engines, and Python/Rust hybrid architectures, utilizing async runtimes and Py03 to deliver memory-safe, high-performance, low-latency financial and networking solutions.
+Core Obsession: High-performance, Low-latency and Memory-safe networking and concurrency. I Specialised in High-Performance Rust systems, concurrent network engines, and Python/Rust hybrid architectures, utilizing async runtimes, Py03 and UnixDomainSocket to deliver memory-safe, high-performance, low-latency financial and networking solutions.
 
 ---
 
