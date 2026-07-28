@@ -99,7 +99,7 @@ An ultra‑low‑latency packet processing engine designed for high‑throughput
 
 ---
 
-4- Elastic Asynchronous RPC Engine
+4- [Elastic Asynchronous RPC Engine](./elastic_async_rpc_eng)
 
 A high‑performance, secure RPC framework built directly on TCP using asyncio and TLS 1.3.
 
@@ -125,7 +125,7 @@ A high‑performance, secure RPC framework built directly on TCP using asyncio a
 
 ---
 
-5- Async Encrypted Message Broker
+5- [Async Encrypted Message Broker](./async_enc_msg_broker)
 
 A custom-built encrypted messaging system using asynchronous networking, cryptography, and a lightweight service bus.
 
@@ -160,7 +160,7 @@ This project demonstrates strong understanding of:
 
 ---
 
-6- Secure Asynchronous Connection Pooling Infrastructure
+6- [Secure Asynchronous Connection Pooling Infrastructure](./connection_pooling)
 
 A high-performance async client–server communication layer with SSL/TLS and robust connection lifecycle management.
 
@@ -183,7 +183,7 @@ A high-performance async client–server communication layer with SSL/TLS and ro
 
 
 ---
-7- Authentication API (FastAPI / JWT / Redis / RabbitMQ)
+7- [Authentication API (FastAPI / JWT / Redis / RabbitMQ)](./fastapi_auth)
 
 A complete authentication system designed for scalable microservices.
 
