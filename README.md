@@ -75,7 +75,7 @@ The project implements a Producer-Consumer pattern to ensure maximum stability a
 
 ---
 
-3- Zero‑Copy High‑Performance Network Engine
+3- [Zero‑Copy High‑Performance Network Engine](./zc_network_engine)
 
 An ultra‑low‑latency packet processing engine designed for high‑throughput secure network communication.
 
